@@ -1,0 +1,7 @@
+es\upm\dit\apsv\traceconsumer2\controller\TraceController.class
+es\upm\dit\apsv\traceconsumer2\Repository\TraceRepository.class
+es\upm\dit\apsv\traceconsumer2\controller\TransportationOrderController.class
+es\upm\dit\apsv\traceconsumer2\Traceconsumer2Application.class
+es\upm\dit\apsv\traceconsumer2\Repository\TransportationOrderRepository.class
+es\upm\dit\apsv\traceconsumer2\model\Trace.class
+es\upm\dit\apsv\traceconsumer2\model\TransportationOrder.class

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 spring:
   cloud:
     stream:
@@ -11,4 +12,19 @@ spring:
           destination: "test"
           group: "${spring.application.name}"
     function:
+=======
+spring:
+  cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers:
+          - localhost:9092
+      bindings:
+        consumer-in-0:
+          destination: "test"
+          group: "${spring.application.name}"
+    function:
+>>>>>>> 711a93f65287f759948c2125d9b4f84836a48e6f
       definition: "consumer"

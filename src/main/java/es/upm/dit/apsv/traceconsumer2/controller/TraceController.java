@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package es.upm.dit.apsv.traceconsumer2.controller;
 import java.util.List;
 
@@ -51,3 +52,58 @@ public class TraceController {
     });
   }
 }
+=======
+package es.upm.dit.apsv.traceconsumer2.controller;
+import java.util.List;
+
+//import org.slf4j.Logger;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import es.upm.dit.apsv.traceconsumer2.Repository.TraceRepository;
+import es.upm.dit.apsv.traceconsumer2.model.Trace;
+
+@RestController
+public class TraceController {
+
+  private final TraceRepository tr;
+
+  public TraceController(TraceRepository tr) {
+    this.tr = tr;
+  }
+
+  @GetMapping("/traces")
+  List<Trace> all() {
+    return (List<Trace>) tr.findAll();
+  }
+
+  @PostMapping("/traces")
+  Trace newTraze(@RequestBody Trace newTraze) {
+    return tr.save(newTraze);
+  }
+
+  @GetMapping("/traces/{id}")
+  Trace one(@PathVariable String id) {
+    return tr.findById(id).orElseThrow();
+  }
+
+  @PutMapping("/traces/{id}")
+  Trace replaceTraze(@RequestBody Trace newTrace, @PathVariable String id) {
+    return tr.findById(id).map(Trace -> {
+      Trace.setTraceId(newTrace.getTraceId());
+      Trace.setTruck(newTrace.getTruck());
+      Trace.setLastSeen(newTrace.getLastSeen());
+      Trace.setLat(newTrace.getLat());
+      Trace.setLng(newTrace.getLng());
+      return tr.save(Trace);
+    }).orElseGet(() -> {
+      newTrace.setTraceId(id);
+      return tr.save(newTrace);
+    });
+  }
+}
+>>>>>>> 711a93f65287f759948c2125d9b4f84836a48e6f
